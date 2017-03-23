@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lyrical-link-161722",
+  "private_key_id": "78ec1621e1861c1c52021402acce5fb108488ec7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDgKUXRs/UVDNq3\n9bdGV3Fj3UNkh8mhxnr+yMRVPghjRl/rfx6V8hqmek/dEDPs9eACrbltGtcNsjSP\n90wa40VHXjNiZplmg707uwOZ6utUkOJLKFrCN6Q/G/zf7xXoeHxvoC3aqoF6I9fU\nEmW+weBe6k224AQDzcPWmzgWPLGjh7AOLvRY1DFb1w+1BKAzoeV0ElPTOHPilMxS\nXafpHl5tfcrRQCJxXC8jMKn/I9QcEbxXe5lBqXOOuGguTMDuQ38JRYWpUhT4wjB6\nehH+4LQGdxr+mYYlkgTk39ShUyRD/EonRcPyXFjRvtwDmiNcacjvVyG1R775v0Wy\nnJ0ZCRbTAgMBAAECggEBAIp088szfI4kAnTeMPYhzMgCQz41ITXrgs0c9SgxyLyJ\nG3Y6bonvoMZzhiDlgS08McF1zLK3gV3UVOMXvMpe1sveQ57kAJxxgtECEpdfozv4\nwc3qfyS3eZwBjZBD/SQ6R6IrLieCabcnrIgxVOcemZgG4Tmz5Mb0saI8/ce+dXqr\njK1amDYpjUO0PI5i45O3EbnLbliBn1w/9vn+LHuDCYJZTCY6UpxdyaAukICJ0F95\nrPW5XuVWufweX4p4+eQVMCman3XLrVfWWaHHpK0IZ7p5eR7IRJD6zQmggt+2YVfC\n8KYkFlE/By90izPaea1hsdDSf01QMcRATFW9XalvcgECgYEA+1fWpLtlDvY12VaF\nBGnKetV29u9VRJmDLkWptiunckrv6tpZnRbCKaJY9W2lUSZmjv0aXjJ7v1u31MrT\nzJQBHWz+MUBfZs8ijcYIR4cv1N5KA+bJ7VTS3Hjr9rQten97Pz2wVM8Q1b+FsmTi\n+4aMTXykl6eeIR41ui0gNHsSq9sCgYEA5FCBj0GL2XWbi1k9hZZFRRL9Dowo2hm3\n2F7vMr3FaSqhnZbveHYFPZKzYBV589L/5GbjBdf/KahtEwdw1QDrB/euryvC5poe\naXvFu/fpZ4mCXfjW3HNBS5s4y+nzq7OuHkhdZk0NBu0DkWIrotPe52W35r2gt9WN\n5GzwCuBB7mkCgYB1mbvMiAHY5kp7zoeecQFUR9zJ3WHAHzPJyr6Fhhdq2rU25cNY\nRPXEFToaW5smRRlnffWAbY6JEpkI7336EqYS5pRo5v28VN6OB0KIdTBkIT3wZWPF\nsBKZJdsCK3u7/TnldS+z/s6ZtGsR9TJfDa1H9DHu43aReFkbK1IOPCeYUQKBgBuD\nwDldctcgH0Cp3oos0+hBI5IPPhUaqFdBCZ6Z1CKaaqOtPurLflIvTcK0k9/Ye9Iw\nvAdGQo/opkx2xxhEZg6twLWHlpNn22Zm7it68vvxTG66wFoM4b+U00FvzlfQ7Zjk\nq6zaeElvYtCwfgW/dst4LLN4AthkuhbfMgZ9hDSRAoGBAINzasMmtqf7ICgq8ZDc\nDhvC/mnCdiWpQuTKuOy2O5B7pYL4bw03qUQ41ajgoHn+cQ10/GJerpcbOppncf0e\nGzCtI6+JSD0OvMcj18FOaFOR9FQuzhhRJ5LOWvyNZmOav029E7u8wTHB1eI8lUFE\nlqJjFMNZZj/auRNUUoG8jQWt\n-----END PRIVATE KEY-----\n",
+  "client_email": "family-calendar@lyrical-link-161722.iam.gserviceaccount.com",
+  "client_id": "101917254267084341036",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/family-calendar%40lyrical-link-161722.iam.gserviceaccount.com"
+}

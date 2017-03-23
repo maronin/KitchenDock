@@ -1,0 +1,19 @@
+{
+  "name": "KitchenDock",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-animate": "^1.6.3",
+    "angular-meteor": "^1.3.11",
+    "angular-ui-router": "^0.4.2",
+    "babel-runtime": "^6.20.0",
+    "bcrypt": "^1.0.2",
+    "google-calendar": "^1.3.2",
+    "meteor-node-stubs": "~0.2.4",
+    "skycons": "^1.0.0",
+    "xml2js": "^0.4.17"
+  }
+}

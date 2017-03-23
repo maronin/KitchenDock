@@ -1,0 +1,61 @@
+.bottom-dark-bar {
+	bottom: 0;
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+	.weather-forecast {
+		margin: 0;
+		bottom: 25px;
+		position: absolute;
+		margin-left: 50px;
+		width: 100%;
+		.forecast {
+			text-transform: uppercase;
+		}
+		.buttons {
+			width: 100px;
+			display: inline-block;
+		}
+		.forecast {
+			display: inline-block;
+		    width: calc(100% - 150px);
+		    bottom: -20px;
+		    position: absolute;
+		    
+		    .day, .hour {
+		    	width: calc(11.1%);
+		    	display: inline-block;
+		    	text-align: center;
+		    	font-size: 20px;
+		    }
+		    .moon-phase {
+		    	display: inline;
+		    	height: 100%;
+		    	position: absolute;
+		    	text-align: center;
+		    	width: 11.1%;
+		    	i {
+		    		font-size: 100px;
+		    	}
+		    	span {
+		    		// width: 100%;
+		    		// position: absolute;
+		    		// text-align: center;
+		    	}
+		    }
+		}
+		.btn {
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+			width: 100px;
+			margin-top: 10px;
+			font-size: 25px;
+
+		}
+		.selected {
+			color: black;
+			background: white;
+		}
+	}
+
+}

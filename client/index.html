@@ -1,0 +1,20 @@
+<head>
+  <title>Weather App</title>
+  <base href="/">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+<!--   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+  <link rel="shortcut icon" type="image/png" href="./resources/images/icon/apple-touch-icon.png" sizes="114x114"/>
+  <link rel="apple-touch-icon" sizes="114x114" href="./resources/images/icon/apple-touch-icon.png"/>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+  <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+  </script>
+
+</head>
+ 
+<body >
+    <div ng-cloak class="main" ng-app="weather-app">
+      <div ui-view></div>  
+    </div>
+</body>

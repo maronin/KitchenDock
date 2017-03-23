@@ -1,0 +1,70 @@
+.top-dark-bar {
+	top: 0;
+}	
+
+.current-location, .current-date, .current-time, .time-zones {	
+	position: absolute;
+}
+
+.current-location {
+	font-size: 25px;
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 400px;
+}
+
+.current-date {	
+	width: 400px;
+	height: 100px;
+	margin-left: 20px;
+	margin-top: 70px;
+
+	font-size: 20px;
+
+	.date, .month-day {
+		padding: 0px;
+	}
+
+	.date {
+		font-size: 50px;
+	}
+
+	.month-day {
+		margin-top: 11px;
+		line-height: 20px;
+		.month {
+			margin-bottom: 2px;
+		}
+		.day {
+			font-size: 32px;
+		}
+	}
+
+}
+
+.current-time {
+	width: 33%;
+	margin-left: 33%;
+	margin-right: 33%;
+	padding-top: 10px;
+	text-align: center;
+	z-index: 10;
+	font-size: 90px;
+}
+
+.time-zones  {
+	right: 0;
+	width: 25%;
+	text-align: center;
+	font-size: 28px;
+	height: 17%;
+    padding-top: 40px;
+    span {
+    	display:inline-block;
+    	float: left;
+    	width: 100%;
+    }
+	.row {
+		margin: 0px;
+	}
+}

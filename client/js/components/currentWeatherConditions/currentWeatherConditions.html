@@ -1,0 +1,15 @@
+<dir class="current-conditions">
+	<div class="row">
+		<div class="col-md-6">
+			<canvas id="currentWeatherIcon" width="90" height="90"></canvas>
+		</div>
+		<div class="temp col-md-6">
+			<span>{{$ctrl.conditions.Temperature}}°</span>
+		</div>		
+	</div>
+	<div class="row">
+		<div class="condition col-md-12" ng-repeat="(key, value) in $ctrl.conditions" ng-if="key != 'Temperature'">
+			<span> {{ key }} </span><span class="condition-value">{{ value }}</span>
+		</div>
+	</div>
+</dir>

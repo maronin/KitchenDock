@@ -1,0 +1,25 @@
+.current-conditions {
+	width: 400px;
+	height: calc(100% - 410px);
+	top: 205px;
+	@include border-radius(15px 0px 0px 15px);
+	padding: 10px;
+	font-size: 25px;
+	right: 0px;
+	.row {
+		margin: 0px;
+		.condition {
+			padding: 0px 10px 0px 10px;
+		}
+
+		.temp {
+			text-align: right;
+			font-size: 50px;	
+		}
+	}
+
+	.condition-value {
+		float: right;
+	}
+
+}

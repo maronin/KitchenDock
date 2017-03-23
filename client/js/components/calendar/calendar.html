@@ -1,0 +1,45 @@
+<div class="calendar">
+	<div class="animate-if" ng-if="$ctrl.calendarView == 'calendar'">
+		<div class="calendar-week-day" ng-repeat="dayOfWeek in daysOfWeek track by $index">
+			{{ dayOfWeek }} 
+		</div>
+		
+		<div class="calendar-day animate-repeat" ng-repeat="day in $ctrl.days" ng-class="{'highlight': day.isToday == true}">
+			<span ng-class="{'grayed-out': day.isNextMonth == true}">{{ day.day }}</span>
+			
+			<div class="calendar-markers">
+				<div class="calendar-alek" ng-if="day.hasEvent && day.member.includes('alek.aronin@gmail.com') "></div> 
+				<div class="calendar-inna" ng-if="day.hasEvent && day.member.includes('inna2128506@gmail.com') "></div> 
+				<div class="calendar-mark" ng-if="day.hasEvent && day.member.includes('steroidcat@gmail.com') "></div> 
+			</div>
+		</div>
+	</div>
+	
+	<div class="events animate-if" ng-if="$ctrl.calendarView != 'calendar'">
+		<div class="events-owner">
+			<div class="owner-dot" ng-class="$ctrl.calendarOwnerColor">
+					
+			</div>
+			<div class="owner-name">
+				{{ $ctrl.calendarOwner }}
+			</div>
+		</div>
+		<div class="animate-repeat" ng-repeat="day in $ctrl.filteredDays($ctrl.days, $ctrl.calendarView, 7)">
+			
+			<div class="month" ng-if="$index == 0">
+				{{ moment.month(day.month - 1).format('MMMM') }}
+			</div>
+			
+			<div class="month" ng-if="day.firstEventOfTheMonth">
+				{{ moment.month(day.month - 1).format('MMMM') }}
+			</div>
+
+			<div class="event">
+				<div class="day"> {{ moment.date(day.day).format("DD") }}</div> 
+				<div class="event-time" ng-if="!day.allDay">{{ moment.hour(day.hour).minute(day.minute).format("HH:mm") }}</div>
+				<div class="event-name">{{ day.event[day.member.indexOf($ctrl.calendarView)] }}</div>
+			</div>
+		</div>
+	</div>
+	<!-- <button id="signinButon" ng-click="$ctrl.signInButton()">Sign-In</button> -->
+</dir>
