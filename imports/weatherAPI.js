@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 import { Weather } from './weather.js';
 
-var wunderWeatherApiKey = 'b06ede3c800ec594';
+var wunderWeatherApiKey = '6bfc01c61a565108';
 var darkSkyApiKey = '30b0e2c6facd1fc0fc7f388ef4f861bb';
 
 var apiCall = function (apiUrl, callback) {
@@ -47,7 +47,7 @@ var buildStringAPI = function(string, long, lat, darksky) {
 
 export const WeatherAPI = { 
 	isDayTime: function(sunrise, sunset, currentDate=null) {
-
+		
 		if (currentDate == null) {
 			currentDate = new Date();
 		}

@@ -18,10 +18,15 @@
 		}
 		.forecast {
 			display: inline-block;
-		    width: calc(100% - 150px);
-		    bottom: -20px;
-		    position: absolute;
-		    
+			width: calc(100% - 150px);
+			bottom: 15px;
+			position: absolute;
+			height: 100%;
+		    .hourly-forecast, .daily-forecast {
+		    	position: absolute;
+		    	top: 0px;
+		    	width: 100%;
+		    }
 		    .day, .hour {
 		    	width: calc(11.1%);
 		    	display: inline-block;
@@ -34,6 +39,7 @@
 		    	position: absolute;
 		    	text-align: center;
 		    	width: 11.1%;
+		    	right: 0px;
 		    	i {
 		    		font-size: 100px;
 		    	}

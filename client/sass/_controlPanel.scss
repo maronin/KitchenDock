@@ -3,7 +3,7 @@
 	height: 100%;
 	width: 100%;
 	position: fixed;
-	color: black;
+
 	.control-nav {
 		display: inline-table;
 		width: 100%;
@@ -14,7 +14,8 @@
 			line-height: 150px;
 			text-align: center;
 			width: 50%;
-
+			background-color: #2196F3;
+			color: white !important;
 		}
 	}
 	.container {
@@ -44,13 +45,14 @@
 		height: calc(100% - 150px); 
 		position: absolute; 
 		width: 100%;
+		color: black;
 		.rows-2 {
 			height: 50%; 
 			width: 100%; 
 			display: table;
 		}
 		.rows-3 {
-			height: 33%; 
+			height: 33.3333333333333333333333333333333%; 
 			width: 100%; 
 			display: table;
 		}
@@ -60,8 +62,11 @@
 			font-size: 200px;     
 			display: table-cell;
 			vertical-align: middle;
+			
 		}
-	
+		.rows-3 .btn-default:active, .btn-default:focus, .btn-default:hover {
+			color: black !important;
+		}
 		
 	}
 

@@ -11,8 +11,12 @@ import { CurrentViews } from '../imports/currentViews.js';
 Meteor.startup(() => {
   	// code to run on server at startup
 
-  	updateWeatherBackground();
-  	Meteor.setInterval(updateWeatherBackground, 300000);
+  	updateWeatherBackgroundFromBing(); 
+  	Meteor.setInterval(updateWeatherBackground, 43200000 ); // every 12 hours
+
+  	// updateWeatherBackground();
+  	// Meteor.setInterval(updateWeatherBackground, 300000);
+
   	Meteor.methods({
   		removeAllEvents: function() {
   			return Events.remove({});
@@ -26,8 +30,9 @@ Meteor.startup(() => {
 
 					const accessToken = user.services.google.accessToken;
 					const calendarID = user.sharedCalendar;
-					if (calendarID == undefined)
+					if (calendarID == undefined) {
 						return;
+					}
 
 					var apiUrl = "/calendar/v3/calendars/" + calendarID +"/events?access_token=" + accessToken;
 					var today = new Date();
@@ -50,7 +55,7 @@ Meteor.startup(() => {
 					GoogleApi.get(apiUrl, options, function(error, data) {
 						if (data) {
 							var events = data.items;
-
+							console.log(events);
 													
 							for (i in events) {
 								event = events[i];
@@ -65,11 +70,11 @@ Meteor.startup(() => {
 									}
 									end = {
 										"month" : parseInt(event.end.date.split("-")[1]), 
-										"day" : parseInt(event.end.date.split("-")[2])-1
+										"day" : parseInt(event.end.date.split("-")[2])
 									}
 									allDay = true;
 								} else {
-									start = { 
+									start = {
 										"month" : parseInt(event.start.dateTime.split("-")[1]),
 										"day" : parseInt(event.start.dateTime.split("-")[2].substring(0, 2)),
 										"hour": parseInt(event.start.dateTime.substring(11, 13)),
@@ -89,6 +94,7 @@ Meteor.startup(() => {
 										$set: {"name": event.summary,
 										"start": start,
 										"end": end,
+										"allDay" : allDay,
 										"member": event.creator.email
 									}
 								})
@@ -133,11 +139,23 @@ Meteor.startup(() => {
 	updateWeatherConditions();
 	Meteor.setInterval(updateWeatherConditions, 300000); //every 5 minutes
 	updateAstronomyConditions();
-	Meteor.setInterval(updateAstronomyConditions, 21600000); //update every 6 hours
+	Meteor.setInterval(updateAstronomyConditions, 3600000); //update every 6 hours
 	
 
 });
+var updateWeatherBackgroundFromBing = function() {
 
+	HTTP.get("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US", {}, function(error, response) {
+		
+		var file = "http://www.bing.com" + response.data.images[0].url;
+		Weather.update("Background", {
+			$set: {
+				"fileName" : file,
+				"bingBackground": true
+			}
+		}); 
+	})	
+}
 var updateWeatherBackground = function() {
 	var fs = Npm.require('fs');
 	var files = fs.readdirSync('../../../../../public/resources/images/weather/');
@@ -148,7 +166,8 @@ var updateWeatherBackground = function() {
 	file = files[r];
 	Weather.update("Background", {
 		$set: {
-			"fileName" : file
+			"fileName" : file,
+			"bingBackground": false
 		}
 	}); 
 }

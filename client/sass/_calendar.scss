@@ -1,3 +1,13 @@
+.calendar-alek {
+	background-color: #FF9800;
+}
+.calendar-inna {
+	background-color: #4CAF50;
+}
+.calendar-mark {
+	background-color: #e70a55;
+}
+
 .calendar {
 
 	width: 500px;
@@ -17,7 +27,8 @@
 		font-size: 26pt;
 	}
 	.calendar-day {
-		span {
+		cursor: default;
+		.calendar-day-number {
 			display: block;
 			margin: 0px;
 			padding: 0px;
@@ -27,23 +38,36 @@
 			width: 68px;
 			height: 10px;
 			display: inline-block;
+			.calendar-inna, .calendar-mark, .calendar-alek {
+				height: 13px;
+				width: 13px;
+				border-radius: 100%;
+				display: inline-block;
+				z-index: 12;
+			}
+	
+			.dot-event-name {
+				position: absolute;
+			    display: inline-block;
+			    border-radius: 5px;
+			    margin-left: -2px;
+			    margin-top: 0px;
+			    font-size: 20px;
+			    background-color: inherit;
+			    pointer-events: none;
+			    padding: 5px;
+			    padding-left: 15px;
+			    z-index: 0;
+				span {
+					line-height: 20px;
+					display: block;
+				}
+			}
 		}
+
 	}		
-	.calendar-inna, .calendar-mark, .calendar-alek {
-		height: 13px;
-		width: 13px;
-		border-radius: 100%;
-		display: inline-block;
-	}	
-	.calendar-alek {
-		background-color: #FF9800;
-	}
-	.calendar-inna {
-		background-color: #4CAF50;
-	}
-	.calendar-mark {
-		background-color: #e70a55;
-	}
+
+
 
 	.highlight {
 		// box-shadow: inset 0px 0 0pt 2pt white;

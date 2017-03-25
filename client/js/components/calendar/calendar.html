@@ -5,12 +5,28 @@
 		</div>
 		
 		<div class="calendar-day animate-repeat" ng-repeat="day in $ctrl.days" ng-class="{'highlight': day.isToday == true}">
-			<span ng-class="{'grayed-out': day.isNextMonth == true}">{{ day.day }}</span>
+			<span class="calendar-day-number" ng-class="{'grayed-out': day.isNextMonth == true}">{{ day.day }}</span>
 			
-			<div class="calendar-markers">
-				<div class="calendar-alek" ng-if="day.hasEvent && day.member.includes('alek.aronin@gmail.com') "></div> 
-				<div class="calendar-inna" ng-if="day.hasEvent && day.member.includes('inna2128506@gmail.com') "></div> 
-				<div class="calendar-mark" ng-if="day.hasEvent && day.member.includes('steroidcat@gmail.com') "></div> 
+			<div class="calendar-markers" ng-init="showEvent = false" >
+				<div class="calendar-alek" ng-if="day.hasEvent && day.member.includes('alek.aronin@gmail.com') " ng-mouseenter="showEvent = true" ng-mouseleave="showEvent = false">
+					<div class="dot-event-name animate-if" ng-if="showEvent">
+						<span>{{ day.event[day.member.indexOf('alek.aronin@gmail.com')] }}</span> 
+					</div>
+				</div> 
+
+				<div class="calendar-inna" ng-if="day.hasEvent && day.member.includes('inna2128506@gmail.com') " ng-mouseenter="showEvent = true" ng-mouseleave="showEvent = false">
+					<div class="dot-event-name animate-if" ng-if="showEvent">
+						<span>{{ day.event[day.member.indexOf('inna2128506@gmail.com')] }}</span> 
+					</div>
+					
+				</div> 
+				
+
+				<div class="calendar-mark" ng-if="day.hasEvent && day.member.includes('steroidcat@gmail.com') " ng-mouseenter="showEvent = true" ng-mouseleave="showEvent = false">
+					<div class="dot-event-name animate-if" ng-if="showEvent">
+						<span>{{ day.event[day.member.indexOf('steroidcat@gmail.com')] }}</span> 
+					</div>
+				</div> 
 			</div>
 		</div>
 	</div>
@@ -36,7 +52,7 @@
 
 			<div class="event">
 				<div class="day"> {{ moment.date(day.day).format("DD") }}</div> 
-				<div class="event-time" ng-if="!day.allDay">{{ moment.hour(day.hour).minute(day.minute).format("HH:mm") }}</div>
+				<div class="event-time" >{{ !day.allDay ? moment.hour(day.hour).minute(day.minute).format("HH:mm") : '' }}</div>
 				<div class="event-name">{{ day.event[day.member.indexOf($ctrl.calendarView)] }}</div>
 			</div>
 		</div>

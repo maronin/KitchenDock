@@ -8,9 +8,14 @@ class mainCtrl {
 		$scope.viewModel(this); 
 		this.helpers({
 			background() {
-				var file = Weather.find({_id: "Background"}, {fields: {fileName: 1}}).fetch()[0];
+				var file = Weather.find({_id: "Background"}).fetch()[0];
 				if (file) {
-					return {'background-image': 'url("resources/images/weather/' + file.fileName + '")'}		
+					if (file.bingBackground == true) {
+						return {'background-image': 'url(' + file.fileName + ')'}		
+					} else if (file.bingBackground == false) {
+						return {'background-image': 'url("resources/images/weather/' + file.fileName + '")'}			
+					} 
+					
 				}
 			}
 		});		

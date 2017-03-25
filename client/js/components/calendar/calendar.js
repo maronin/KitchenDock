@@ -28,9 +28,8 @@ class calendarCtrl {
 						day = days[i];
 						for (j in events) {
 							event = events[j];
-
-							if ((event.start.day == day.day && event.start.month == day.month) || 
-								(event.end.day == day.day && event.end.month == day.month)) {
+							
+							if (event.start.day == day.day && !event.allDay) {
 								days[i].hasEvent = true;
 								days[i].event.push(event.name);
 								days[i].member.push(event.member);
@@ -39,15 +38,16 @@ class calendarCtrl {
 								days[i].minute = event.start.minute;
 							}
 
-							if ((event.start.day < day.day && event.start.month == day.month) && 
-								(event.end.day > day.day && event.end.month == day.month)) {
+							if (event.start.day == day.day && event.allDay) {
 								days[i].hasEvent = true;
+								days[i].allDay = event.allDay;
 								days[i].event.push(event.name);
 								days[i].member.push(event.member);
 							}
+
 						}
 					}
-					console.log(days);
+
 					return days;
 				}
 			},
@@ -100,8 +100,9 @@ class calendarCtrl {
 		var month;
 		for (i = 0; i < days.length && filteredDays.length < limit; i++) {
 			day = days[i];
-			
+			day.firstEventOfTheMonth = false;
 			if (day.event[day.member.indexOf(view)]) {
+
 				if (!month) {
 					month = day.month;
 				}
@@ -112,14 +113,7 @@ class calendarCtrl {
 				filteredDays.push(day);
 			}
 		}
-		console.log(filteredDays);
 		return filteredDays;
-	}
-
-	eventFilter(day, view) {
-		var today = new Date();
-		var index = day.event[day.memeber.indexOf(view)];
-		return day.event[index] && (day.day >= today.getDay() && day.month >= today.getMonth());
 	}
 
 	signInButton() {
@@ -129,12 +123,14 @@ class calendarCtrl {
 			forceApprovalPrompt: true
 		});
 	}
+
+	
 }
 
 function getDaysInMonth(month) {
 	 var today = new Date();
 	 var sundayOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - today.getDay()));
-     var date = sundayOfWeek;
+     var date = sundayOfWeek 
      var rows = 5;
      var days = [];
 

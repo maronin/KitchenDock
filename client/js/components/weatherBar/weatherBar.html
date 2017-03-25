@@ -13,27 +13,33 @@
 		 
 		<div class="forecast">
 			
-			<div class="hour" ng-repeat="hour in $ctrl.forecastHourly" on-finish-render="ngRepeatFinished" ng-if="!($ctrl.weekView)">
+			<!-- Hour -->
+			<div class="hourly-forecast animate-if" ng-if="!($ctrl.weekView)">
+				<div class="hour" ng-repeat="hour in $ctrl.forecastHourly" on-finish-render="ngRepeatFinished">
 				<canvas id="{{ 'icon-' + hour.FCTTIME.hour}}" width="90" height="90"></canvas>
-				<div class="time">
-					{{ hour.FCTTIME.hour }}:00
-				</div>
-				<div class="temp-hour">
-					<span>{{ hour.temp.metric }}°</span>
+					<div class="time">
+						{{ hour.FCTTIME.hour }}:00
+					</div>
+					<div class="temp-hour">
+						<span>{{ hour.temp.metric }}°</span>
+					</div>
 				</div>
 			</div>
-
-			<div class="day" ng-repeat="day in $ctrl.forecast7Days" on-finish-render="ngRepeatFinished" ng-if="$ctrl.weekView">
-				
-				<canvas id="{{ 'icon-' + day.date.weekday_short + '-' + day.date.day}}" width="90" height="90"></canvas>
-				
-				<div class="weekday">
-					{{ day.date.weekday_short }}	
+			
+			<!-- Day -->
+			<div class="daily-forecast animate-if" ng-if="$ctrl.weekView">
+				<div class="day" ng-repeat="day in $ctrl.forecast7Days" on-finish-render="ngRepeatFinished">
+					
+					<canvas id="{{ 'icon-' + day.date.weekday_short + '-' + day.date.day}}" width="90" height="90"></canvas>
+					
+					<div class="weekday">
+						{{ day.date.weekday_short }}	
+					</div>
+					<div class="high-low">
+						<span>{{ day.low.celsius }}</span> | <span>{{ day.high.celsius }}</span>
+					</div>
+					
 				</div>
-				<div class="high-low">
-					<span>{{ day.low.celsius }}</span> | <span>{{ day.high.celsius }}</span>
-				</div>
-				
 			</div>
 
 
