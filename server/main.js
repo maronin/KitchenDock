@@ -46,7 +46,7 @@ Meteor.startup(() => {
 							'timeMax': (endDate).toISOString(),
 							'showDeleted': false,
 							'singleEvents': true,
-							'maxResults': 100,
+							'maxResults': 200,
 							'orderBy': 'startTime'
 						},
 						'user': user
@@ -55,14 +55,15 @@ Meteor.startup(() => {
 					GoogleApi.get(apiUrl, options, function(error, data) {
 						if (data) {
 							var events = data.items;
-							console.log(events);
 													
 							for (i in events) {
 								event = events[i];
 								var start;
 								var end;
 								var allDay;
-
+								var multiDay = false;
+								var date_created;
+								var today = new Date();
 								if (event.start.date) {
 									start = { 
 										"month" : parseInt(event.start.date.split("-")[1]), 
@@ -73,6 +74,10 @@ Meteor.startup(() => {
 										"day" : parseInt(event.end.date.split("-")[2])
 									}
 									allDay = true;
+									if (start.day < end.day && start.month <= end.month) {
+										multiDay = true;
+									}
+									date_created = new Date(today.getYear(), start.month, start.day, 0, 0, 0, 0);
 								} else {
 									start = {
 										"month" : parseInt(event.start.dateTime.split("-")[1]),
@@ -86,16 +91,18 @@ Meteor.startup(() => {
 										"hour": parseInt(event.end.dateTime.substring(11, 13)),
 										"minute": parseInt(event.end.dateTime.substring(14, 16))
 									}
+									date_created = new Date(today.getYear(), start.month, start.day, start.hour, start.minute, 0, 0);
 									allDay = false;
 								}
 
-								// Events.remove({});
 								Events.upsert(event.id, {
 										$set: {"name": event.summary,
 										"start": start,
 										"end": end,
 										"allDay" : allDay,
-										"member": event.creator.email
+										"multiDay": multiDay,
+										"member": event.creator.email,
+										"date_created": date_created
 									}
 								})
 							}
@@ -151,7 +158,8 @@ var updateWeatherBackgroundFromBing = function() {
 		Weather.update("Background", {
 			$set: {
 				"fileName" : file,
-				"bingBackground": true
+				"bingBackground": true,
+				"backgroundDescription": response.data.images[0].copyright
 			}
 		}); 
 	})	

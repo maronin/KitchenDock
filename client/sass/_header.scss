@@ -19,7 +19,7 @@
 	margin-left: 20px;
 	margin-top: 70px;
 
-	font-size: 20px;
+	font-size: 40px;
 
 	.date, .month-day {
 		padding: 0px;
@@ -30,13 +30,15 @@
 	}
 
 	.month-day {
-		margin-top: 11px;
+		margin-top: 24px;
 		line-height: 20px;
 		.month {
 			margin-bottom: 2px;
 		}
 		.day {
-			font-size: 32px;
+			font-size: 22px;
+			margin-left: -64px;
+			margin-top: 10px;
 		}
 	}
 

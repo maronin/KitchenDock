@@ -54,6 +54,12 @@ class currentWeatherConditionsCtrl {
 					return data;
 				}
 
+			},
+			backgroundDescription() {
+			var description = Weather.find({_id: "Background"}).fetch()[0];
+			if (description) {
+					return description.backgroundDescription;
+				}
 			}
 		})
 	}

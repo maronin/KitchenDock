@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 import { Weather } from './weather.js';
 
-var wunderWeatherApiKey = '6bfc01c61a565108';
+var wunderWeatherApiKey = 'b06ede3c800ec594';
 var darkSkyApiKey = '30b0e2c6facd1fc0fc7f388ef4f861bb';
 
 var apiCall = function (apiUrl, callback) {
@@ -28,6 +28,11 @@ var apiCall = function (apiUrl, callback) {
 }
 
 var buildStringAPI = function(string, long, lat, darksky) {
+	if (wunderWeatherApiKey == "6bfc01c61a565108") 
+		wunderWeatherApiKey = "b06ede3c800ec594";
+	else if (wunderWeatherApiKey == "b06ede3c800ec594")
+		wunderWeatherApiKey = "6bfc01c61a565108";
+	
 	apiUrl = "";
 	if (darksky) {
 		apiUrl = "https://api.darksky.net/forecast/" + darkSkyApiKey + "/" + long + "," + lat + "?units=si";

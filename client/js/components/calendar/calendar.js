@@ -18,38 +18,44 @@ class calendarCtrl {
 		$scope.viewModel(this);
 		setupCalendar();
 		$scope.moment = new moment();
+		$scope.nextMonth = new moment();
+		$scope.today = new moment();
+
 		this.helpers({
 			days() {
 				var events = Events.find({}).fetch();
-				if (events) {
-					days = getDaysInMonth(month);
-					
-					for (i in days) {
-						day = days[i];
+
+				if (events) {	
+					var days = getDaysInMonth(month);
+					for (i = 0; i < days.length; i++) {
+						var day = days[i];
 						for (j in events) {
-							event = events[j];
-							
-							if (event.start.day == day.day && !event.allDay) {
-								days[i].hasEvent = true;
-								days[i].event.push(event.name);
-								days[i].member.push(event.member);
-								days[i].allDay = event.allDay;
-								days[i].hour = event.start.hour;
-								days[i].minute = event.start.minute;
+							var event = events[j];
+
+							if (event.start.day == day.day && event.start.month == day.month) {
+								day.hasEvent = true;
+								// day.isMultiDay = event.multiDay;
+								day.events.push(event);
+								day.member.push(event.member);
+							}
+							else if ((event.start.day < day.day && event.start.month == day.month) && 
+								(event.end.day > day.day && event.end.month == day.month)) {
+								day.hasEvent = true;
+								day.events.push(event);
+								day.member.push(event.member);	
+								// day.isMultiDay = event.multiDay; 
 							}
 
-							if (event.start.day == day.day && event.allDay) {
-								days[i].hasEvent = true;
-								days[i].allDay = event.allDay;
-								days[i].event.push(event.name);
-								days[i].member.push(event.member);
-							}
 
 						}
 					}
-
 					return days;
 				}
+			},
+			events() {
+				var events = Events.find({}, {sort: {date_created: -1}}).fetch().reverse();
+				
+				return events.slice(0,9);
 			},
 			calendarView() {
 				data = CurrentViews.find({_id: "calendarView"}, {fields: {currentView: 1}}).fetch()[0]
@@ -94,25 +100,38 @@ class calendarCtrl {
 
 
 	}
-	
+	whatEventColor(member) {
+		console.log(member);
+		if (member == 'alek.aronin@gmail.com')
+			return 'calendar-alek';
+		if (member == 'inna2128506@gmail.com')
+			return 'calendar-inna';
+		else
+			return 'calendar-mark';
+	}
+
 	filteredDays(days, view, limit) {
 		filteredDays = [];
 		var month;
+
 		for (i = 0; i < days.length && filteredDays.length < limit; i++) {
 			day = days[i];
-			day.firstEventOfTheMonth = false;
-			if (day.event[day.member.indexOf(view)]) {
-
-				if (!month) {
-					month = day.month;
+			for (j = 0; j < day.events.length; j++) {
+				if (day.events[j].member == view) {
+					day.firstEventOfTheMonth = false;
+					if (!month) { 
+						month = day.month;
+					} 
+					if (day.month != month) {
+						month = day.month;
+						day.firstEventOfTheMonth = true;
+					}	
+					day.events = filterEvents(day, view);
+					filteredDays.push(day);
 				}
-				if (day.month != month) {
-					month = day.month;
-					day.firstEventOfTheMonth = true;
-				}
-				filteredDays.push(day);
-			}
+			}		
 		}
+
 		return filteredDays;
 	}
 
@@ -126,13 +145,24 @@ class calendarCtrl {
 
 	
 }
+function filterEvents(day, view) {
+		
+	var filteredEvents = [];
 
+	for (j = 0; j < day.events.length; j++) {
+		if (day.events[j].member == view) {
+			filteredEvents.push(day.events[j]);
+		}
+	}
+	return filteredEvents
+	
+}
 function getDaysInMonth(month) {
 	 var today = new Date();
 	 var sundayOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - today.getDay()));
      var date = sundayOfWeek 
-     var rows = 5;
-     var days = [];
+     var rows = 2;
+     var days = new Array();
 
      var counter = 0;
 
@@ -146,10 +176,10 @@ function getDaysInMonth(month) {
      			minute: 0,
      			day: 		 dateOfMonth,
      			month: 		 date.getMonth() + 1,
-     			event: 		 [],
+     			events:      [], 
      			isToday: 	 dateOfMonth == today.getDate() && month == date.getMonth(),
      			isNextMonth: month != date.getMonth(),
-     			member : 	 []
+     			member : 	 new Array()
      		});
      		date.setDate(date.getDate() + 1);
      	}

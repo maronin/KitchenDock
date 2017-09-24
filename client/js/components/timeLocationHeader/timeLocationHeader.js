@@ -22,7 +22,7 @@ class timeLocationHeaderCtrl {
 			$scope.day = moment().format("dddd");
  
 			//Set the time for the different timezones
-			$scope.AlekTime = moment().tz('Europe/Berlin').format('HH:mm');
+			$scope.AlekTime = moment().format('HH:mm');
 			$scope.RussiaTime = moment().tz('Europe/Moscow').format('HH:mm');
 			$scope.TokyoTime = moment().tz('Asia/Tokyo').format('HH:mm');
 			$scope.$apply();

@@ -28,6 +28,7 @@
 	}
 	.calendar-day {
 		cursor: default;
+		color: rgba(255, 255, 255, 0.34);
 		.calendar-day-number {
 			display: block;
 			margin: 0px;
@@ -45,8 +46,12 @@
 				display: inline-block;
 				z-index: 12;
 			}
-	
+			.multi-day-event {
+				// border-color: black !important;
+				// border-radius: 0px;
+			}
 			.dot-event-name {
+				color: white;
 				position: absolute;
 			    display: inline-block;
 			    border-radius: 5px;
@@ -58,6 +63,7 @@
 			    padding: 5px;
 			    padding-left: 15px;
 			    z-index: 0;
+			    min-width: 150px;
 				span {
 					line-height: 20px;
 					display: block;
@@ -66,12 +72,41 @@
 		}
 
 	}		
+	.upcoming-events {
+		display: inline-table;
+		font-size: 23px;
+		ul {
+			padding: 0px;
+			li {
+				padding-left: 5px;
+				border-radius: 5px;
+				list-style: none;
+				margin-top: 2px;
+				.event-day {
+					width: 40px;
+					display: table-cell;
+					height: 40px;
+					text-align: center;
+					vertical-align: middle;
+					border-radius: 10px;
+					font-size: 28px;
+				}
+				.event-name {
+					display: table-cell;
+					padding-left: 10px;
+				}
 
+			}
+		}
+	}
 
 
 	.highlight {
 		// box-shadow: inset 0px 0 0pt 2pt white;
-		color: #ffd600;
+		color: white;
+		.dot-event-name span {
+			color: white;
+		}
 	}
 
 	.grayed-out {
@@ -86,6 +121,9 @@
 		position: absolute;
 		top: 0px;
 		width: 100%;
+		.day {
+			
+		}
 		.events-owner {
 			text-align: center;
 			width: 100%;
@@ -102,17 +140,19 @@
 		.month {
 			text-decoration: underline;
 		}
-		.day {
-			width: 50px;
-		}
+
 		.event-time {
 			width: 80px;
 		}
-		.day, .event-time, .event-name  {
+		.events-group, .day-events, .day-number, .event-time, .event-name, .event-group {
 			display: table-cell;
 		}
 
-		
-
+		.day-events {
+			line-height: 24px;
+			.day-number {
+				width: 50px;
+			}
+		}
 	}
 }

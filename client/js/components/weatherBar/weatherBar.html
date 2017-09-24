@@ -46,7 +46,7 @@
 			<div class="moon-phase">
 				<i ng-class="'wi wi-moon-alt-' + $ctrl.moon.ageOfMoon"></i>
 				<br/>
-				<span>{{ $ctrl.moon.phaseOfMoon }}</span>
+				<span>{{ $ctrl.moon.phaseOfMoon == '0%' ? 'New Moon' : $ctrl.moon.phaseOfMoon}}</span>
 			</div>
 
 		</div>
